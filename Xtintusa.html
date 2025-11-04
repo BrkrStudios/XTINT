@@ -1,0 +1,1144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XTint | Residential & Automotive Films</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --black: #000000;
+            --dark: #0a0a0a;
+            --gray: #1c1c1c;
+            --medium-gray: #2a2a2a;
+            --light-gray: #666;
+            --white: #ffffff;
+            --accent: #00ff88;
+            --accent-dim: #00ff8820;
+        }
+
+        ::selection {
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        body {
+            font-family: 'SF Mono', 'Monaco', 'Inconsolata', monospace;
+            background: var(--black);
+            color: var(--white);
+            overflow-x: hidden;
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            width: 100%;
+            padding: 30px 40px;
+            z-index: 1000;
+            mix-blend-mode: difference;
+        }
+
+        .nav-container {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 24px;
+            font-weight: 900;
+            letter-spacing: -1px;
+            color: var(--white);
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            list-style: none;
+        }
+
+        .nav-menu a {
+            color: var(--white);
+            text-decoration: none;
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            transition: all 0.3s ease;
+        }
+
+        .nav-menu a::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 1px;
+            background: var(--accent);
+            transition: width 0.3s ease;
+        }
+
+        .nav-menu a:hover::after {
+            width: 100%;
+        }
+
+        /* Hero Section - Split Design */
+        .hero {
+            height: 100vh;
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            position: relative;
+        }
+
+        .hero-left {
+            background: var(--black);
+            display: flex;
+            align-items: center;
+            padding: 0 60px;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-left::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: repeating-linear-gradient(
+                0deg,
+                transparent,
+                transparent 2px,
+                var(--gray) 2px,
+                var(--gray) 4px
+            );
+            opacity: 0.1;
+            animation: scan 8s linear infinite;
+        }
+
+        @keyframes scan {
+            0% { transform: translateY(0); }
+            100% { transform: translateY(20px); }
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-badge {
+            display: inline-block;
+            padding: 8px 16px;
+            border: 1px solid var(--accent);
+            color: var(--accent);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 40px;
+            position: relative;
+            animation: glitch 3s infinite;
+        }
+
+        @keyframes glitch {
+            0%, 100% { transform: translate(0); }
+            20% { transform: translate(-1px, 1px); }
+            40% { transform: translate(-1px, -1px); }
+            60% { transform: translate(1px, 1px); }
+            80% { transform: translate(1px, -1px); }
+        }
+
+        .hero h1 {
+            font-size: clamp(48px, 6vw, 80px);
+            font-weight: 900;
+            line-height: 0.9;
+            margin-bottom: 30px;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+        }
+
+        .hero h1 span {
+            display: block;
+            overflow: hidden;
+        }
+
+        .hero h1 span .word {
+            display: inline-block;
+            animation: slideUp 0.8s cubic-bezier(0.65, 0, 0.35, 1) forwards;
+            animation-delay: calc(var(--i) * 0.1s);
+            transform: translateY(100%);
+        }
+
+        @keyframes slideUp {
+            to { transform: translateY(0); }
+        }
+
+        .text-outline {
+            -webkit-text-stroke: 1px var(--white);
+            -webkit-text-fill-color: transparent;
+        }
+
+        .hero-right {
+            background: var(--gray);
+            position: relative;
+            overflow: hidden;
+        }
+
+        .hero-image {
+            width: 100%;
+            height: 100%;
+            position: relative;
+        }
+
+        .hero-image::before {
+            content: 'MOBILE SERVICE';
+            position: absolute;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%) rotate(-45deg);
+            font-size: 120px;
+            font-weight: 900;
+            color: rgba(255, 255, 255, 0.02);
+            white-space: nowrap;
+            z-index: 1;
+        }
+
+        .hero-image img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            filter: grayscale(100%) contrast(1.2);
+            opacity: 0.7;
+        }
+
+        .hero-cta {
+            margin-top: 50px;
+            display: flex;
+            gap: 30px;
+        }
+
+        .btn-primary {
+            padding: 16px 40px;
+            background: var(--accent);
+            color: var(--black);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.3s ease;
+        }
+
+        .btn-primary:hover {
+            background: var(--white);
+            transform: translateY(-2px);
+        }
+
+        .btn-secondary {
+            padding: 16px 40px;
+            background: transparent;
+            color: var(--white);
+            border: 1px solid var(--white);
+            text-decoration: none;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            transition: all 0.3s ease;
+        }
+
+        .btn-secondary:hover {
+            background: var(--white);
+            color: var(--black);
+        }
+
+        /* Stats Ticker */
+        .ticker {
+            background: var(--accent);
+            color: var(--black);
+            padding: 20px 0;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .ticker-content {
+            display: flex;
+            animation: ticker 20s linear infinite;
+            white-space: nowrap;
+        }
+
+        @keyframes ticker {
+            0% { transform: translateX(0); }
+            100% { transform: translateX(-50%); }
+        }
+
+        .ticker-item {
+            padding: 0 50px;
+            font-size: 14px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        /* Services Grid */
+        .services {
+            padding: 120px 40px;
+            background: var(--dark);
+        }
+
+        .section-header {
+            margin-bottom: 80px;
+        }
+
+        .section-number {
+            font-size: 12px;
+            color: var(--accent);
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -2px;
+            line-height: 0.9;
+        }
+
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2px;
+            background: var(--light-gray);
+            padding: 2px;
+        }
+
+        .service-card {
+            background: var(--dark);
+            padding: 60px 40px;
+            position: relative;
+            overflow: hidden;
+            transition: all 0.5s ease;
+            cursor: pointer;
+        }
+
+        .service-card:hover {
+            background: var(--gray);
+        }
+
+        .service-number {
+            position: absolute;
+            top: 30px;
+            right: 30px;
+            font-size: 72px;
+            font-weight: 900;
+            color: var(--gray);
+            opacity: 0.5;
+        }
+
+        .service-card:hover .service-number {
+            color: var(--accent);
+            opacity: 0.2;
+        }
+
+        .service-icon {
+            font-size: 32px;
+            margin-bottom: 30px;
+            display: inline-block;
+            animation: float 3s ease-in-out infinite;
+            animation-delay: calc(var(--i) * 0.5s);
+        }
+
+        @keyframes float {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-10px); }
+        }
+
+        .service-card h3 {
+            font-size: 24px;
+            font-weight: 700;
+            margin-bottom: 20px;
+            text-transform: uppercase;
+            letter-spacing: -1px;
+        }
+
+        .service-card p {
+            color: var(--light-gray);
+            font-size: 14px;
+            line-height: 1.8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Process Section */
+        .process {
+            padding: 120px 40px;
+            background: var(--black);
+            position: relative;
+        }
+
+        .process-timeline {
+            max-width: 1200px;
+            margin: 80px auto 0;
+            position: relative;
+        }
+
+        .timeline-line {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            right: 0;
+            height: 1px;
+            background: var(--gray);
+        }
+
+        .timeline-progress {
+            position: absolute;
+            top: 30px;
+            left: 0;
+            height: 1px;
+            background: var(--accent);
+            width: 0;
+            transition: width 2s ease;
+        }
+
+        .timeline-progress.animate {
+            width: 100%;
+        }
+
+        .process-steps {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 40px;
+            position: relative;
+        }
+
+        .process-step {
+            text-align: center;
+            opacity: 0;
+            transform: translateY(30px);
+            animation: fadeInUp 0.6s forwards;
+            animation-delay: calc(var(--i) * 0.2s);
+        }
+
+        @keyframes fadeInUp {
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .step-circle {
+            width: 60px;
+            height: 60px;
+            background: var(--black);
+            border: 2px solid var(--gray);
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 20px;
+            font-weight: 700;
+            transition: all 0.3s ease;
+        }
+
+        .process-step:hover .step-circle {
+            border-color: var(--accent);
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .process-step h4 {
+            font-size: 18px;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .process-step p {
+            color: var(--light-gray);
+            font-size: 14px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        /* Gallery Masonry */
+        .gallery {
+            padding: 120px 40px;
+            background: var(--gray);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 60px;
+        }
+
+        .gallery-item {
+            position: relative;
+            overflow: hidden;
+            background: var(--black);
+            cursor: pointer;
+        }
+
+        .gallery-item:nth-child(1) { grid-row: span 2; }
+        .gallery-item:nth-child(4) { grid-column: span 2; }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: all 0.5s ease;
+            filter: grayscale(100%);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+            filter: grayscale(0%);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 30px;
+            background: linear-gradient(to top, rgba(0, 0, 0, 0.9), transparent);
+            transform: translateY(100%);
+            transition: transform 0.3s ease;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-overlay h4 {
+            font-size: 18px;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+        }
+
+        .gallery-overlay p {
+            color: var(--accent);
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Testimonials */
+        .testimonials {
+            padding: 120px 40px;
+            background: var(--black);
+            position: relative;
+        }
+
+        .testimonials-container {
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .testimonial-slider {
+            margin-top: 60px;
+            position: relative;
+            height: 400px;
+        }
+
+        .testimonial-slide {
+            position: absolute;
+            width: 100%;
+            opacity: 0;
+            transform: translateX(50px);
+            transition: all 0.5s ease;
+        }
+
+        .testimonial-slide.active {
+            opacity: 1;
+            transform: translateX(0);
+        }
+
+        .testimonial-content {
+            display: grid;
+            grid-template-columns: 1fr 2fr;
+            gap: 60px;
+            align-items: center;
+        }
+
+        .testimonial-rating {
+            font-size: 120px;
+            font-weight: 900;
+            color: var(--accent);
+            line-height: 1;
+        }
+
+        .testimonial-text {
+            font-size: 24px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .testimonial-author {
+            font-size: 14px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--light-gray);
+        }
+
+        .testimonial-dots {
+            display: flex;
+            justify-content: center;
+            gap: 10px;
+            margin-top: 40px;
+        }
+
+        .dot {
+            width: 40px;
+            height: 2px;
+            background: var(--gray);
+            cursor: pointer;
+            transition: all 0.3s ease;
+        }
+
+        .dot.active {
+            background: var(--accent);
+        }
+
+        /* Contact Section */
+        .contact {
+            padding: 120px 40px;
+            background: var(--accent);
+            color: var(--black);
+        }
+
+        .contact-content {
+            max-width: 1200px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr;
+            gap: 100px;
+            align-items: center;
+        }
+
+        .contact-left h2 {
+            font-size: clamp(48px, 6vw, 72px);
+            font-weight: 900;
+            text-transform: uppercase;
+            letter-spacing: -3px;
+            line-height: 0.9;
+            margin-bottom: 30px;
+        }
+
+        .contact-left p {
+            font-size: 18px;
+            margin-bottom: 40px;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .contact-info {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+        }
+
+        .contact-item {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            font-size: 16px;
+            font-weight: 600;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .contact-item a {
+            color: var(--black);
+            text-decoration: none;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px 40px 40px;
+            background: var(--black);
+            border-top: 1px solid var(--gray);
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: 2fr 1fr 1fr;
+            gap: 60px;
+        }
+
+        .footer-brand h3 {
+            font-size: 24px;
+            margin-bottom: 20px;
+            font-weight: 900;
+        }
+
+        .footer-brand p {
+            color: var(--light-gray);
+            font-size: 14px;
+            line-height: 1.8;
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+        }
+
+        .footer-column h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+            color: var(--accent);
+        }
+
+        .footer-column ul {
+            list-style: none;
+        }
+
+        .footer-column li {
+            margin-bottom: 15px;
+        }
+
+        .footer-column a {
+            color: var(--light-gray);
+            text-decoration: none;
+            font-size: 14px;
+            transition: color 0.3s ease;
+        }
+
+        .footer-column a:hover {
+            color: var(--white);
+        }
+
+        .footer-bottom {
+            margin-top: 60px;
+            padding-top: 30px;
+            border-top: 1px solid var(--gray);
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .footer-bottom p {
+            color: var(--light-gray);
+            font-size: 12px;
+        }
+
+        /* Noise Texture Overlay */
+        .noise {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+            opacity: 0.02;
+            z-index: 1;
+            background: url('data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzAwIj48ZmlsdGVyIGlkPSJhIj48ZmVUdXJidWxlbmNlIHR5cGU9ImZyYWN0YWxOb2lzZSIgYmFzZUZyZXF1ZW5jeT0iLjc1IiBudW1PY3RhdmVzPSIxMCIvPjxmZUNvbG9yTWF0cml4IHR5cGU9InNhdHVyYXRlIiB2YWx1ZXM9IjAiLz48L2ZpbHRlcj48cmVjdCB3aWR0aD0iMTAwJSIgaGVpZ2h0PSIxMDAlIiBmaWx0ZXI9InVybCgjYSkiIG9wYWNpdHk9IjEiLz48L3N2Zz4=');
+        }
+
+        /* Mobile Responsive */
+        @media (max-width: 768px) {
+            .hero {
+                grid-template-columns: 1fr;
+            }
+
+            .hero-right {
+                display: none;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .process-steps {
+                grid-template-columns: 1fr;
+            }
+
+            .testimonial-content {
+                grid-template-columns: 1fr;
+            }
+
+            .contact-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+            }
+
+            .nav-menu {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- Noise Overlay -->
+    <div class="noise"></div>
+
+    <!-- Navigation -->
+    <nav>
+        <div class="nav-container">
+            <div class="logo">XTint.</div>
+            <ul class="nav-menu">
+                <li><a href="#services">Services</a></li>
+                <li><a href="#process">Process</a></li>
+                <li><a href="#gallery">Work</a></li>
+                <li><a href="#contact">Contact</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+        <div class="hero-left">
+            <div class="hero-content">
+                <div class="hero-badge">Residential & Automotive Services • Houston TX</div>
+                <h1>
+                    <span><span class="word" style="--i: 0">Window</span></span>
+                    <span><span class="word text-outline" style="--i: 1">Tinting</span></span>
+                    <span><span class="word" style="--i: 2">Redefined</span></span>
+                </h1>
+                <div class="hero-cta">
+                    <a href="#contact" class="btn-primary">Contact</a>
+                    <a href="#services" class="btn-secondary">Explore</a>
+                </div>
+            </div>
+        </div>
+        <div class="hero-right">
+            <div class="hero-image">
+                <img src="https://via.placeholder.com/800x1000/1c1c1c/ffffff?text=Premium+Tinting" alt="Premium Car">
+            </div>
+        </div>
+    </section>
+
+    <!-- Stats Ticker -->
+    <div class="ticker">
+        <div class="ticker-content">
+            <span class="ticker-item">★ 5+ VEHICLES SERVICED</span>
+            <span class="ticker-item">★ 5.0 GOOGLE RATING</span>
+            <span class="ticker-item">★ LIFETIME WARRANTY</span>
+            <span class="ticker-item">★ SAME DAY SERVICE</span>
+            <span class="ticker-item">★ BUISNESS INSTALLATION</span>
+            <span class="ticker-item">★ CERAMIC TECHNOLOGY</span>
+            <!-- Duplicate for seamless loop -->
+            <span class="ticker-item">★ 5+ VEHICLES SERVICED</span>
+            <span class="ticker-item">★ 5.0 GOOGLE RATING</span>
+            <span class="ticker-item">★ LIFETIME WARRANTY</span>
+            <span class="ticker-item">★ SAME DAY SERVICE</span>
+            <span class="ticker-item">★ BUISNESS INSTALLATION</span>
+            <span class="ticker-item">★ CERAMIC TECHNOLOGY</span>
+        </div>
+    </div>
+
+    <!-- Services Section -->
+    <section class="services" id="services">
+        <div class="section-header">
+            <p class="section-number">01 — SERVICES</p>
+            <h2 class="section-title">What We<br>Offer</h2>
+        </div>
+        <div class="services-grid">
+            <div class="service-card" style="--i: 1;">
+                <span class="service-number">01</span>
+                <div class="service-icon">🎨</div>
+                <h3>Automotive Window Tint</h3>
+                <p>Premium ceramic films engineered to reject heat, block UV rays, and enhance privacy without compromising visibility.</p>
+            </div>
+            <div class="service-card" style="--i: 2;">
+                <span class="service-number">02</span>
+                <div class="service-icon">🛡️</div>
+                <h3>Residential Window Tint</h3>
+               <p>Premium ceramic films designed to keep your home cooler, protect interiors from harmful UV rays, and provide daytime privacy—all while maintaining a clear, natural view.</p>
+            </div>
+            <div class="service-card" style="--i: 3;">
+                <span class="service-number">03</span>
+                <div class="service-icon">✨</div>
+                <h3>Chrome Delete</h3>
+                <p>Transform your vehicle's aesthetic with precision vinyl wrapping. Matte, gloss, or satin finishes tailored to your vision.</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Process Section -->
+    <section class="process" id="process">
+        <div class="section-header">
+            <p class="section-number">02 — PROCESS</p>
+            <h2 class="section-title">How It<br>Works</h2>
+        </div>
+        <div class="process-timeline">
+            <div class="timeline-line"></div>
+            <div class="timeline-progress" id="timelineProgress"></div>
+            <div class="process-steps">
+                <div class="process-step" style="--i: 0;">
+                    <div class="step-circle">01</div>
+                    <h4>Book</h4>
+                    <p>Schedule your appointment online or Text/Call us directly</p>
+                </div>
+                <div class="process-step" style="--i: 1;">
+                    <div class="step-circle">02</div>
+                    <h4>We Arrive or you arrive</h4>
+                    <p>Our mobile unit comes to your house, Or you arrive at the shop</p>
+                </div>
+                <div class="process-step" style="--i: 2;">
+                    <div class="step-circle">03</div>
+                    <h4>Install</h4>
+                    <p>installation with precision and care</p>
+                </div>
+                <div class="process-step" style="--i: 3;">
+                    <div class="step-circle">04</div>
+                    <h4>Enjoy</h4>
+                    <p>Smile with premium protection and style</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Gallery Section -->
+    <section class="gallery" id="gallery">
+        <div class="section-header">
+            <p class="section-number">03 — PORTFOLIO</p>
+            <h2 class="section-title">Recent<br>Projects</h2>
+        </div>
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/600x800/1c1c1c/666666?text=Tesla+Model+S" alt="Tesla Model S">
+                <div class="gallery-overlay">
+                    <h4>Tesla Model S</h4>
+                    <p>20% Ceramic All Around</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/600x400/1c1c1c/666666?text=BMW+M3" alt="BMW M3">
+                <div class="gallery-overlay">
+                    <h4>BMW M3</h4>
+                    <p>5% Rear / 35% Front</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/600x400/1c1c1c/666666?text=Mercedes+AMG" alt="Mercedes AMG">
+                <div class="gallery-overlay">
+                    <h4>Mercedes AMG</h4>
+                    <p>Full Chrome Delete</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/1200x400/1c1c1c/666666?text=Porsche+911" alt="Porsche 911">
+                <div class="gallery-overlay">
+                    <h4>Porsche 911</h4>
+                    <p>PPF Full Front</p>
+                </div>
+            </div>
+            <div class="gallery-item">
+                <img src="https://via.placeholder.com/600x400/1c1c1c/666666?text=Range+Rover" alt="Range Rover">
+                <div class="gallery-overlay">
+                    <h4>Range Rover</h4>
+                    <p>15% All Windows</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Testimonials -->
+    <section class="testimonials" id="testimonials">
+        <div class="testimonials-container">
+            <div class="section-header">
+                <p class="section-number">04 — TESTIMONIALS</p>
+                <h2 class="section-title">Client<br>Reviews</h2>
+            </div>
+            <div class="testimonial-slider">
+                <div class="testimonial-slide active">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">5.0</div>
+                        <div>
+                            <p class="testimonial-text">"Exceptional service from start to finish. A new house is being built next to mine, the darkness is so nice."</p>
+                            <p class="testimonial-author">— Danni Sullivan, Residential</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">5.0</div>
+                        <div>
+                            <p class="testimonial-text">"They came to my office and had my BMW looking incredible in under an hour. The ceramic tint quality is outstanding. Highly recommend their services."</p>
+                            <p class="testimonial-author">— Sarah Williams, BMW M4</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="testimonial-slide">
+                    <div class="testimonial-content">
+                        <div class="testimonial-rating">5.0</div>
+                        <div>
+                            <p class="testimonial-text">"Professional, punctual, and the PPF installation is flawless. The fact they come to you makes this the best detailing service in Houston."</p>
+                            <p class="testimonial-author">— James Rodriguez, Porsche 911</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="testimonial-dots">
+                <div class="dot active" onclick="changeSlide(0)"></div>
+                <div class="dot" onclick="changeSlide(1)"></div>
+                <div class="dot" onclick="changeSlide(2)"></div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Contact Section -->
+    <section class="contact" id="contact">
+        <div class="contact-content">
+            <div class="contact-left">
+                <h2>Let's<br>Connect</h2>
+                <p>Ready to transform your vehicle? Or home? Schedule your appointment today and experience the difference.</p>
+                <div class="hero-cta">
+                    <a href="tel:832-776-5717" class="btn-primary" style="background: var(--black); color: var(--white);">
+                        Call Or Text Now
+                    </a>
+                </div>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <span>📍</span>
+                    <span>Houston, TX</span>
+                </div>
+                <div class="contact-item">
+                    <span>📞</span>
+                    <a href="tel:832-359-2035">832-776-5717</a>
+                </div>
+                <div class="contact-item">
+                    <span>✉️</span>
+                    <a href="mailto:xanderanguloINQ@gmail.com">Get Quote</a>
+                </div>
+                <div class="contact-item">
+                    <span>🕐</span>
+                    <span>Mon-Sun 7AM-8:30PM*</span>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="footer-content">
+            <div class="footer-brand">
+                <h3>XTint.</h3>
+                <p>A new start to Houston's premier mobile window tinting service.</p>
+            </div>
+            <div class="footer-column">
+                <h4>Services</h4>
+                <ul>
+                    <li><a href="#services">Automotive Tinting</a></li>
+                    <li><a href="#services">Residential Tinting</a></li>
+                    <li><a href="#services">Chrome Delete</a></li>
+                </ul>
+            </div>
+            <div class="footer-column">
+                <h4>Company</h4>
+                <ul>
+                    <li><a href="#gallery">Portfolio</a></li>
+                    <li><a href="#testimonials">Reviews</a></li>
+                    <li><a href="#process">Process</a></li>
+                    <li><a href="#contact">Contact</a></li>
+                </ul>
+            </div>
+        </div>
+        
+        <div class="footer-bottom">
+            <p>© 2025 XTint. All rights reserved.</p>
+            <p>Houston, Texas</p>
+        </div>
+    </footer>
+
+    <script>
+        // Timeline animation
+        const observerOptions = {
+            threshold: 0.5,
+            rootMargin: '0px'
+        };
+
+        const timelineObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    document.getElementById('timelineProgress').classList.add('animate');
+                }
+            });
+        }, observerOptions);
+
+        const processSection = document.querySelector('.process-timeline');
+        if (processSection) {
+            timelineObserver.observe(processSection);
+        }
+
+        // Testimonial Slider
+        let currentSlide = 0;
+        const slides = document.querySelectorAll('.testimonial-slide');
+        const dots = document.querySelectorAll('.dot');
+
+        function changeSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            dots[currentSlide].classList.remove('active');
+            
+            currentSlide = index;
+            
+            slides[currentSlide].classList.add('active');
+            dots[currentSlide].classList.add('active');
+        }
+
+        // Auto-play testimonials
+        setInterval(() => {
+            const nextSlide = (currentSlide + 1) % slides.length;
+            changeSlide(nextSlide);
+        }, 5000);
+
+        // Smooth scroll
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Parallax effect on scroll
+        window.addEventListener('scroll', () => {
+            const scrolled = window.pageYOffset;
+            const heroImage = document.querySelector('.hero-image img');
+            if (heroImage) {
+                heroImage.style.transform = `translateY(${scrolled * 0.3}px)`;
+            }
+        });
+
+        // Intersection Observer for fade in animations
+        const fadeElements = document.querySelectorAll('.service-card, .process-step, .gallery-item');
+        
+        const fadeObserver = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        });
+
+        fadeElements.forEach(el => {
+            fadeObserver.observe(el);
+        });
+    </script>
+</body>
+</html>

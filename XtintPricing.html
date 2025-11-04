@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>XTINT Price Sheet</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            background-color: #000000;
+            color: #ffffff;
+            font-family: 'Arial', sans-serif;
+            padding: 40px 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .back-button {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            background-color: transparent;
+            border: 1px solid #00ff88;
+            color: #00ff88;
+            padding: 12px 24px;
+            text-decoration: none;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            font-weight: bold;
+            transition: all 0.3s ease;
+            margin-bottom: 40px;
+        }
+
+        .back-button:hover {
+            background-color: #00ff88;
+            color: #000000;
+        }
+
+        .back-arrow {
+            font-size: 1.2rem;
+        }
+
+        .header {
+            margin-bottom: 50px;
+        }
+
+        .brand {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 10px;
+        }
+
+        .tagline {
+            color: #00ff88;
+            font-size: 0.9rem;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 30px;
+        }
+
+        .section-title {
+            font-size: 3rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 40px;
+            text-transform: uppercase;
+        }
+
+        .info-box {
+            background-color: #111111;
+            border: 1px solid #222222;
+            padding: 30px;
+            margin-bottom: 30px;
+        }
+
+        .info-label {
+            color: #00ff88;
+            font-size: 0.85rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 15px;
+        }
+
+        .info-content {
+            font-size: 1rem;
+            line-height: 1.8;
+            color: #cccccc;
+        }
+
+        .price-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-bottom: 30px;
+        }
+
+        .price-card {
+            background-color: #111111;
+            border: 1px solid #222222;
+            padding: 30px;
+            transition: border-color 0.3s;
+        }
+
+        .price-card:hover {
+            border-color: #00ff88;
+        }
+
+        .price-card-title {
+            font-size: 1.5rem;
+            font-weight: bold;
+            color: #ffffff;
+            margin-bottom: 15px;
+            text-transform: uppercase;
+        }
+
+        .price {
+            font-size: 2.5rem;
+            font-weight: bold;
+            color: #00ff88;
+            margin-bottom: 10px;
+        }
+
+        .price-detail {
+            color: #999999;
+            font-size: 0.9rem;
+            line-height: 1.6;
+        }
+
+        .divider {
+            height: 1px;
+            background-color: #222222;
+            margin: 40px 0;
+        }
+
+        .highlight-box {
+            background-color: #00ff88;
+            color: #000000;
+            padding: 25px;
+            margin-top: 30px;
+            font-weight: bold;
+            text-align: center;
+            font-size: 1.1rem;
+        }
+
+        .percentages {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 15px;
+            margin-top: 15px;
+        }
+
+        .percentage-badge {
+            background-color: #222222;
+            color: #00ff88;
+            padding: 10px 20px;
+            font-size: 1.2rem;
+            font-weight: bold;
+        }
+
+        @media (max-width: 768px) {
+            .section-title {
+                font-size: 2rem;
+            }
+            
+            .price-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <a href="Xtintusa.html" class="back-button">
+            <span class="back-arrow">←</span>
+            <span>Back to Home</span>
+        </a>
+
+        <div class="header">
+            <div class="brand">XTint.</div>
+            <div class="tagline">Residential & Automotive Services • Houston TX</div>
+        </div>
+
+        <h1 class="section-title">PRICING</h1>
+
+
+        <div class="info-box">
+            <div class="info-label">FILM QUALITY</div>
+            <div class="info-content">All films are premium ceramic technology (GeoShield)</div>
+        </div>
+
+        <div class="info-box">
+            <div class="info-label">TEXAS LEGAL LIMITS</div>
+            <div class="info-content">
+                Windshield: 70% or above<br>
+                Front 2 Windows: 25% or above<br>
+                Back Windows: Any percentage
+            </div>
+        </div>
+
+        
+
+        
+
+        <div class="info-box">
+            <div class="info-label">AVAILABLE PERCENTAGES</div>
+            <div class="percentages">
+                <div class="percentage-badge">5%</div>
+                <div class="percentage-badge">15%</div>
+                <div class="percentage-badge">35%</div>
+                <div class="percentage-badge">50%</div>
+                <div class="percentage-badge">75%</div>
+            </div>
+        </div>
+
+              <div class="highlight-box">
+            ✓ FREE UBER SERVICE UP TO 5 MILES FROM WORK POINT (TO AND FROM)
+        </div>
+
+            <!-- <div class="highlight-box">
+            ✓ In the event of a tint violation ticket, Xtint will provide a one-time complimentary replacement with a legal film option.
+        </div> -->
+
+        <div class="divider"></div>
+
+        <div class="price-grid">
+            <div class="price-card">
+                <div class="price-card-title">Front Windows</div>
+                <div class="price">$85</div>
+                <div class="price-detail">2 front windows ($45 a window) </div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-title">Sedans Full Package</div>
+                <div class="price">$225</div>
+                <div class="price-detail">Sedans<br>4 doors + back glass</div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-title">Trucks & SUVS Full Package</div>
+                <div class="price">$285</div>
+                <div class="price-detail">Trucks & SUVs<br>4 doors + back glass</div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-title">Back Windows</div>
+                <div class="price">$140</div>
+                <div class="price-detail">Rear windows only + Back Windshield</div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-title">Sunvisor Strip</div>
+                <div class="price">$35</div>
+                <div class="price-detail">Aka Eyebrow tint</div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-title">Full Windshield</div>
+                <div class="price">$110</div>
+                <div class="price-detail">Only available in:<br>30%, 50%, or 75%</div>
+            </div>
+
+            <div class="price-card">
+                <div class="price-card-title">Tint Removal</div>
+                <div class="price">$10-100</div>
+                <div class="price-detail">Price varies based on condition</div>
+            </div>
+        </div>
+
+    </div>
+</body>
+</html>
